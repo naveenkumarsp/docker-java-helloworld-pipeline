@@ -7,7 +7,7 @@ pipeline {
      // YOUR_DOCKERHUB_USERNAME (it doesn't matter if you don't have one)
      
      SERVICE_NAME = "docker-java-helloworld-pipeline"
-     IMAGE_NAME = "ci-pipeline-demo-${BUILD_USER_ID}"
+     IMAGE_NAME = "ci-pipeline-demo-${jenkins_username}"
      REPOSITORY_TAG="${DOCKERHUB_URL}/${IMAGE_NAME}:${BUILD_ID}"
    }
 
