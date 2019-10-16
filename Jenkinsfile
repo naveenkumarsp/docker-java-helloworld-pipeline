@@ -24,6 +24,7 @@ pipeline {
             sh """sed -i 's+Admin+'"${jenkins_username}"'+' ./src/main/webapp/index.jsp"""
             sh 'cat ./src/main/webapp/index.jsp'
             sh """sed -i 's+jenkins_username+'"${jenkins_username}"'+' deploy.yaml"""
+            sh """sed -i 's+REPOSITORY_TAG+'"${REPOSITORY_TAG}"'+' deploy.yaml"""
             sh """sed -i 's+jenkins_username+'"${jenkins_username}"'+' ingress-service.yaml"""
          }
       }
