@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: helloworld-jenkins_username
+  namespace: default
+spec:
+  rules:
+  - host: jenkins_username.eqslearning.xyz
+    http:
+      paths:
+      - path: /docker-demo/
+      - backend:
+          serviceName: helloworld-jenkins_username
+          servicePort: 8080

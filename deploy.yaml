@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-jenkins_username
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: helloworld-jenkins_username
+  replicas: 1
+  template: # template for the pods
+    metadata:
+      labels:
+        app: helloworld-jenkins_username
+    spec:
+      containers:
+      - name: helloworld-jenkins_username
+        image: REPOSITORY_TAG
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloworld-jenkins_username
+  namespace: default
+spec:
+  # This defines which pods are going to be represented by this Service
+  # The service becomes a network endpoint for either other services
+  # or maybe external users to connect to (eg browser)
+  selector:
+    app: helloworld-jenkins_username
+  ports:
+    - name: http
+      port: 8080
+  type: ClusterIP
